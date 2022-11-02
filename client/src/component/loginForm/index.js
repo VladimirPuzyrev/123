@@ -23,6 +23,8 @@ export default function Login({onFormSwitch, onEmailSubmit, onPasswordSubmit}) {
                 onSubmit={handleSubmit}
 
                 >
+
+                
                 <h3>Sign Up</h3>
 
                     <div className='input-block'>
@@ -49,7 +51,7 @@ export default function Login({onFormSwitch, onEmailSubmit, onPasswordSubmit}) {
                     />
 
                         <label>Enter password</label>
-                    </div>
+                    </div> 
                     
                     <div className='form__remember'>
                         <label>Remember password?</label>
