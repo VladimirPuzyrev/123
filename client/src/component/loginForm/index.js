@@ -1,6 +1,7 @@
-import React, { useRef, useForm } from 'react'
-import { v4 as uuidV4 } from 'uuid'
-
+import React, { useRef, useForm } from 'react';
+import ReactDOM from 'react-dom';
+import { v4 as uuidV4 } from 'uuid';
+import {Button} from '../index'
 import './loginForm.scss'
 
 export default function Login({onFormSwitch, onEmailSubmit, onPasswordSubmit}) {
@@ -14,6 +15,10 @@ export default function Login({onFormSwitch, onEmailSubmit, onPasswordSubmit}) {
         onEmailSubmit(emailRef.current.value)
         onPasswordSubmit(passwordRef.current.value)
 
+    }
+
+    function router(pages){
+        onFormSwitch = pages
     }
 
     return (
@@ -61,12 +66,13 @@ export default function Login({onFormSwitch, onEmailSubmit, onPasswordSubmit}) {
                     </div>
 
                 <div className='form__button'>
+                    <Button />
                     <button className="login-button" type="submit">Login</button>
                     <a className="forgot-button"  href='#'>Forgot Password?</a>
                 </div>
             </form>
 
-            <button className='register'>REGISTER</button>
+            <button className='register' onClick={router('register')}>REGISTER</button>
         </div>
     );
   };

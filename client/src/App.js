@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {Welcome, Register} from './pages/index.js';
-import "bootstrap/dist/css/bootstrap.min.css"
+import {Route, Router} from 'react-router-dom'
 
 function App() {
 //   const [currentForm, setCurrentForm] = useState('Welcome');
@@ -10,8 +10,12 @@ function App() {
 //   }
 
   return (
-    <Welcome />
-    // currentForm === "Welcome" ? <Welcome onFormSwitch={toggleForm}/> : <Register onFormSwitch={toggleForm}/>
+    <Router>
+      <div className='app'>
+        <Route path='/' exact component={Welcome}/>
+        <Route path='/registration' exact component={Register}/>
+      </div>
+    </Router>
   );
 }
 
