@@ -1,5 +1,6 @@
-
 import React, { useRef, useForm } from 'react'
+import { v4 as uuidV4 } from 'uuid'
+
 import './loginForm.scss'
 
 export default function Login({onFormSwitch, onEmailSubmit, onPasswordSubmit}) {
@@ -28,7 +29,7 @@ export default function Login({onFormSwitch, onEmailSubmit, onPasswordSubmit}) {
                         <input
                             type="email"
                             className="form__email"
-                            placeholder=''
+                            placeholder=' '
                             ref={emailRef}
                             required
                         />
@@ -42,7 +43,7 @@ export default function Login({onFormSwitch, onEmailSubmit, onPasswordSubmit}) {
                     <input
                         type="password"
                         className="form__password"
-                        placeholder=''
+                        placeholder=' '
                         ref={passwordRef}
                         required
                     />
