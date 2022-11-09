@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import {Welcome, Register} from './pages/index.js';
-import {Route, Router} from 'react-router-dom'
+import {Welcome, Registration} from './Pages/Pages.js';
+import { Routes, Route} from "react-router-dom";
 
 function App() {
 //   const [currentForm, setCurrentForm] = useState('Welcome');
@@ -10,12 +10,12 @@ function App() {
 //   }
 
   return (
-    <Router>
       <div className='app'>
-        <Route path='/' exact component={Welcome}/>
-        <Route path='/registration' exact component={Register}/>
+        <Routes>
+          <Route path="/" element={<Welcome />} />
+          <Route path="/registration" element={<Registration />} />
+        </Routes> 
       </div>
-    </Router>
   );
 }
 

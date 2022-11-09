@@ -1,0 +1,31 @@
+.page{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #161819;
+    header{
+        display: flex;
+        width: 100%;
+        min-height: 15vh;
+        align-items: center;
+        justify-content: center;
+
+        span{
+            font-size: 40px;
+        }
+        
+    }
+
+    .registration{
+        width: 100%;
+        min-height: 85vh;
+        display: flex;
+        border: 1px solid black;
+
+        justify-content: center;
+        align-items: center;
+        .registration__form{
+            width: 50%;
+        }
+    }
+}
+    
