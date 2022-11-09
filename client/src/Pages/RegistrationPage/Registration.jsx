@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {RegistrationForm} from '../../Component/Component.js';
+import {RegistrationForm} from '../../component/Component';
 import './Registration.scss'
 
 
@@ -12,7 +12,6 @@ function Registration() {
 
   return (
     <div className='page'>
-
       <header>
         <span>Be</span>
           <a><img/></a>

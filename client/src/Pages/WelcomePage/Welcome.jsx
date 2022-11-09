@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {Login} from '../../Component/Component.js'
+import {Login} from '../../component/Component.js';
 import './Welcome.scss'
 
 

@@ -24,7 +24,7 @@ export default function RegstrarionForm({onEmailSubmit, onPasswordSubmit, onLogi
     }
 
     return (
-        <div className='registration'>
+        <div className='registrations'>
             <form 
                 className="email-registration"
                 onSubmit={handleSubmit}
@@ -41,7 +41,9 @@ export default function RegstrarionForm({onEmailSubmit, onPasswordSubmit, onLogi
                     />
 
                     <label>Enter Login</label>
-                    
+                </div>
+
+                <div className='input-block'>
                     <input
                         type="email"
                         className="form__email"
@@ -51,7 +53,9 @@ export default function RegstrarionForm({onEmailSubmit, onPasswordSubmit, onLogi
                     />
 
                     <label>Enter email</label>
-
+                </div>
+                
+                <div className='input-block'>
                     <input
                         type="password"
                         className="form__password"
@@ -59,9 +63,11 @@ export default function RegstrarionForm({onEmailSubmit, onPasswordSubmit, onLogi
                         ref={passwordRef}
                         required
                     />
-
                     <label>Enter password</label>
+                </div>  
 
+
+                <div className='input-block'>
                     <input
                         type="password"
                         className="form__сonfirm"

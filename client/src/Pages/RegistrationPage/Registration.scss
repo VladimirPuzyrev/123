@@ -2,6 +2,8 @@
     display: flex;
     flex-wrap: wrap;
     background-color: #161819;
+    align-items: center;
+    justify-content: center;
     header{
         display: flex;
         width: 100%;
@@ -17,12 +19,12 @@
 
     .registration{
         width: 100%;
-        min-height: 85vh;
+        min-height: 84vh;
         display: flex;
         border: 1px solid black;
-
-        justify-content: center;
         align-items: center;
+        justify-content: center;
+
         .registration__form{
             width: 50%;
         }
