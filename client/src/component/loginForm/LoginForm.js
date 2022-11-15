@@ -1,7 +1,7 @@
 import React, { useRef, useForm } from 'react';
 import ReactDOM from 'react-dom';
 import { v4 as uuidV4 } from 'uuid';
-import './loginForm.scss'
+import './LoginForm.scss'
 import { Link } from 'react-router-dom';
 
 export default function Login({onEmailSubmit, onPasswordSubmit}) {
