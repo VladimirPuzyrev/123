@@ -1,25 +1,15 @@
-import React, { useRef } from 'react'
+import React, { useState } from 'react'
 import { v4 as uuidV4 } from 'uuid'
 import './RegistrationForm.scss'
+import {Input} from '../Component'
+export default function RegstrarionForm() {
 
-export default function RegstrarionForm({onEmailSubmit, onPasswordSubmit, onLoginSubmit}) {
-
-    const loginRef = useRef()
-    const emailRef = useRef()
-    const passwordRef = useRef()
-    const passwordConfirm = useRef()
-
-    function handleSubmit(e){
+    function formSend(e){
         e.preventDefault()
 
-        onEmailSubmit(emailRef.current.value)
-        onLoginSubmit(loginRef.current.value)
-
-        if(passwordRef === passwordConfirm){
-            onPasswordSubmit(passwordRef.current.value)
-        }else{
-            //quyreSelector('.not-same')
-        }
+        const [login, setLogin] = useState()
+        const [email, setEmail] = useState()
+        const [password, setPassword] = useState()
 
     }
 
@@ -27,16 +17,17 @@ export default function RegstrarionForm({onEmailSubmit, onPasswordSubmit, onLogi
         <div className='registrations'>
             <form 
                 className="email-registration"
-                onSubmit={handleSubmit}
+                onSubmit={formSend}
             >
                 <h3>Registration</h3>
 
                 <div className='input-block'>
-                    <input
+                    <Input
                         type="text"
                         className="form__login"
                         placeholder=' '
-                        ref={loginRef}
+                        value={login}
+                        setValue={setLogin}
                         required
                     />
 
@@ -44,11 +35,12 @@ export default function RegstrarionForm({onEmailSubmit, onPasswordSubmit, onLogi
                 </div>
 
                 <div className='input-block'>
-                    <input
+                    <Input
                         type="email"
                         className="form__email"
                         placeholder=' '
-                        ref={emailRef}
+                        value={email}
+                        setValue={setEmail}
                         required
                     />
 
@@ -56,11 +48,12 @@ export default function RegstrarionForm({onEmailSubmit, onPasswordSubmit, onLogi
                 </div>
                 
                 <div className='input-block'>
-                    <input
+                    <Input
                         type="password"
                         className="form__password"
                         placeholder=' '
-                        ref={passwordRef}
+                        value={password}
+                        setValue={setPassword}
                         required
                     />
                     <label>Enter password</label>
@@ -72,8 +65,6 @@ export default function RegstrarionForm({onEmailSubmit, onPasswordSubmit, onLogi
                         type="password"
                         className="form__сonfirm"
                         placeholder=' '
-                        ref={passwordConfirm}
-                        required
                     />
 
                     <label>Confirm password</label>
@@ -81,7 +72,7 @@ export default function RegstrarionForm({onEmailSubmit, onPasswordSubmit, onLogi
         
             </form>
 
-            <button className='register'>REGISTER</button>
+            <button className='register' type='submit'>REGISTER</button>
         </div>
     );
   };

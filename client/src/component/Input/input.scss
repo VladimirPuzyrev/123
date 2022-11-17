@@ -1,0 +1,42 @@
+$top: 15px;
+$left: 55px;
+
+
+@mixin input {
+    width: 100%;
+    height: 50%;
+    border: none; 
+    border-radius: 15px;
+    background-color: #39181f;
+    background-repeat:no-repeat;
+    background-position: 3% 0%;
+    padding-left: 40px;
+    margin: 15px;
+    color: white;
+    border: 1px solid #ADD100;
+
+    &:focus{
+        outline: none;
+    }
+
+    &:focus ~ label,
+    &:not(:placeholder-shown) ~ label{
+        top: $top - 23px;
+        font-size: 14px;
+
+        padding: 0% 1%;
+        background-color: #1f242e;
+        border-radius: 12px;
+    }
+
+    &:invalid{
+        color: red;
+        border-color: red;
+    }
+
+    
+    // &:invalid ~ label{
+    //     top: $top - 22px;
+    //     font-size: 14px;
+    // }
+}
