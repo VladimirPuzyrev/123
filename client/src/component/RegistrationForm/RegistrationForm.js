@@ -4,20 +4,16 @@ import './RegistrationForm.scss'
 import {Input} from '../Component'
 export default function RegstrarionForm() {
 
-    function formSend(e){
-        e.preventDefault()
+    
+    const [login, setLogin] = useState()
+    const [email, setEmail] = useState()
+    const [password, setPassword] = useState()
 
-        const [login, setLogin] = useState()
-        const [email, setEmail] = useState()
-        const [password, setPassword] = useState()
-
-    }
-
+    console.log(setLogin)
     return (
         <div className='registrations'>
             <form 
                 className="email-registration"
-                onSubmit={formSend}
             >
                 <h3>Registration</h3>
 
@@ -38,7 +34,7 @@ export default function RegstrarionForm() {
                     <Input
                         type="email"
                         className="form__email"
-                        placeholder=' '
+                        placeholder=''
                         value={email}
                         setValue={setEmail}
                         required

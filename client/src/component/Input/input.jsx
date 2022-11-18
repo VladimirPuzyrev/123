@@ -1,10 +1,10 @@
 import React from 'react'
-import 'input.scss'
+import './input.scss'
 
 
-const Input = ({props}) => {
+const Input = (props) => {
     return(
-        <imput onChange={(e)=> props.setValue(e.target.value)}
+        <input onChange={(e)=> props.setValue(e.target.value)}
             value={props.value}
             type={props.type}
             placeholder={props.placeholder}

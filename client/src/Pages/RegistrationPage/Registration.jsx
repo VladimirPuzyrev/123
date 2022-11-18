@@ -5,10 +5,7 @@ import './Registration.scss'
 
 function Registration() {
 
-  
-  const [email, setEmail] = useState()
-  const [password, setPassword] = useState()
-  const [login, setLogin] = useState()
+
 
   return (
     <div className='page'>
@@ -22,9 +19,6 @@ function Registration() {
 
         <div className='registration__form'>    
           <RegistrationForm
-            onEmailSubmit={setEmail}
-            onPasswordSubmit={setPassword}
-            onLoginSubmit={setLogin}
           />
         </div>
         
