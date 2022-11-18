@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
-import { v4 as uuidV4 } from 'uuid'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 import './RegistrationForm.scss'
 import {Input} from '../Component'
+import { registration } from '../../actions/user'
 export default function RegstrarionForm() {
 
     
@@ -9,7 +10,7 @@ export default function RegstrarionForm() {
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
 
-    console.log(setLogin)
+
     return (
         <div className='registrations'>
             <form 
@@ -34,7 +35,7 @@ export default function RegstrarionForm() {
                     <Input
                         type="email"
                         className="form__email"
-                        placeholder=''
+                        placeholder=' '
                         value={email}
                         setValue={setEmail}
                         required
@@ -68,7 +69,7 @@ export default function RegstrarionForm() {
         
             </form>
 
-            <button className='register' type='submit'>REGISTER</button>
+            <button className='register' onClick={() => registration(login, email, password)} type='submit'>REGISTER</button>
         </div>
     );
   };
