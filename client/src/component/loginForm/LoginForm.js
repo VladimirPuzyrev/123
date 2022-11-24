@@ -1,37 +1,29 @@
-import React, { useRef, useForm } from 'react';
-import ReactDOM from 'react-dom';
-import { v4 as uuidV4 } from 'uuid';
+import React, { useState, useRef, useForm } from 'react';
 import './loginForm.scss'
 import { Link } from 'react-router-dom';
+import {Input} from '../Component'
+import {useDispatch} from 'react-redux'
 
 export default function Login({onEmailSubmit, onPasswordSubmit}) {
 
-    const emailRef = useRef()
-    const passwordRef = useRef()
-
-    function handleSubmit(e){
-        e.preventDefault()
-
-        onEmailSubmit(emailRef.current.value)
-        onPasswordSubmit(passwordRef.current.value)
-
-    }
+    const [login, setLogin] = useState()
+    const [email, setEmail] = useState()
+    const [password, setPassword] = useState()
 
     return (
         <div className='login'>
             <form 
                 className="email-login"
-                onSubmit={handleSubmit}
-
                 >
                 <h3>Sign Up</h3>
 
                     <div className='input-block'>
-                        <input
+                        <Input
                             type="email"
                             className="form__email"
                             placeholder=' '
-                            ref={emailRef}
+                            value={email}
+                            setValue={setEmail}
                             required
                         />
 
@@ -40,11 +32,12 @@ export default function Login({onEmailSubmit, onPasswordSubmit}) {
 
 
                     <div className='input-block'>
-                    <input
+                    <Input
                         type="password"
                         className="form__password"
                         placeholder=' '
-                        ref={passwordRef}
+                        value={password}
+                        setValue={setPassword}
                         required
                     />
 

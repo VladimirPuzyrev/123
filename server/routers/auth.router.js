@@ -21,7 +21,7 @@ router.post('/registration',
             const errors = validationResult(req)
             
             if(!errors.isEmpty()){
-                return res.status(400).json({message:"Uncorrect fields", errors})
+                return res.status(111).json({message:"Uncorrect fields", errors})
             }
 
             const {login, email, password} = req.body
