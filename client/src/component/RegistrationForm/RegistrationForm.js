@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
 import './RegistrationForm.scss'
 import {Input} from '../Component'
+import { Link } from 'react-router-dom';
 import { registration } from '../../actions/user'
 export default function RegstrarionForm() {
-
     
     const [login, setLogin] = useState()
     const [email, setEmail] = useState()
@@ -16,6 +15,8 @@ export default function RegstrarionForm() {
             <form 
                 className="email-registration"
             >
+                <Link to='/login'className='back_login'><img src="./back.svg"/></Link>
+
                 <h3>Registration</h3>
 
                 <div className='input-block'>

@@ -13,17 +13,15 @@ export const registration = async (login, email, password) => {
     }
 }
 
-export const login = async (login, email, password) => {
+export const login =  (email, password) => {
     return async dispatch => {
-            try{
-            const responce = await axios.post(`http://localhost:2228/api/auth/login`, {
-                login,
+        try {
+            const response = await axios.post(`http://localhost:2228/api/auth/login`, {
                 email,
                 password
             })
-        }catch(e){
-            alert(e)
-        } 
+        } catch (e) {
+            alert(e.response.data.message)
+        }
     }
-
 }
