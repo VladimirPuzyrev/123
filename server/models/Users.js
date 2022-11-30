@@ -8,5 +8,4 @@ const User = new Schema({
     files: [{type: ObjectId, ref:'File'}]
 })
 
-//6372c61289c31537d8f044c2
 module.exports = model('User', User)

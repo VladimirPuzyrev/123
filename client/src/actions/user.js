@@ -9,7 +9,7 @@ export const registration = async (login, email, password) => {
         })
         alert(responce.data.message)
     }catch(e){
-        alert(e)
+        alert('Данный пользователь уже зарегестрирован')
     }
 }
 

@@ -5,14 +5,13 @@ $left: 55px;
     width: 100%;
     height: 50%;
     border: none; 
-    border-radius: 15px;
     background-color: #39181f;
     background-repeat:no-repeat;
     background-position: 3% 0%;
     padding-left: 40px;
     margin: 15px;
     color: white;
-    border: 1px solid #ADD100;
+    border-bottom: 1px solid #ADD100;
 
     &:focus{
         outline: none;

@@ -17,13 +17,13 @@ router.post('/registration',
 
     async (req, res) => {
         try{
+            console.log('1')
             console.log(req.body)
             const errors = validationResult(req)
             
             if(!errors.isEmpty()){
                 return res.status(111).json({message:"Uncorrect fields", errors})
             }
-
             const {login, email, password} = req.body
             const candidate = await User.findOne({login, email})
 

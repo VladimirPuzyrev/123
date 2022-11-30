@@ -7,7 +7,8 @@ const corsMiddleware = require('./middleware/cors.middleware.js')
 const app = express()
 const PORT = config.get("serverPort")
 
-app.use(corsMiddleware)
+app.use(corsMiddleware);
+
 app.use(express.json())
 app.use('/api/auth', router)
 
@@ -23,7 +24,7 @@ const start = async () => {
         })
 
     } catch (e){
-        console.log('пошел нахуй')
+        console.log(e)
     }
 }
 
