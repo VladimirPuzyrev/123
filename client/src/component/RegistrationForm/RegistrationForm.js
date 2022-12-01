@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import './RegistrationForm.scss'
 import {Input} from '../Component'
 import { Link } from 'react-router-dom';
@@ -15,7 +15,7 @@ export default function RegstrarionForm() {
             <form 
                 className="email-registration"
             >
-                <Link to='/login'className='back_login'><img src="./back.svg"/></Link>
+                <Link to='/login'className='back_login'><img src="./back.svg" alt='назад'/></Link>
 
                 <h3>Registration</h3>
 

@@ -47,9 +47,9 @@ router.post('/login',
 
     async (req, res) => {
         try{
-            const {login, email, password} = req.body
+            const {email, password} = req.body
 
-            const user = await User.findOne({login, email})
+            const user = await User.findOne({email})
 
             if(!user){
                 return res.status(404).json({message: "User not found"})
@@ -67,7 +67,6 @@ router.post('/login',
                 token,
                 user:{
                     id: user.id,
-                    login: user.login,
                     email: user.email,
                     avatar: user.avatar
                 }

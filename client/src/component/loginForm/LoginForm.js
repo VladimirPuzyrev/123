@@ -9,13 +9,20 @@ export default function Login() {
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [rememberMe, setRememberMe] = useState("")
     const dispatch = useDispatch()
 
-    console.log(email)
+    function handleSubmit(e) {
+        e.preventDefault();
+
+        dispatch(login({email, password}));
+    }
+
     return (
         <div className='login'>
             <form 
                 className="email-login"
+                onSubmit={handleSubmit}
                 >
                 <h3>Sign Up</h3>
 
@@ -34,14 +41,14 @@ export default function Login() {
 
 
                     <div className='input-block'>
-                    <Input
-                        type="password"
-                        className="form__password"
-                        placeholder=' '
-                        value={password}
-                        setValue={setPassword}
-                        required
-                    />
+                        <Input
+                            type="password"
+                            className="form__password"
+                            placeholder=' '
+                            value={password}
+                            setValue={setPassword}
+                            required
+                        />
 
                         <label>Enter password</label>
                     </div>
@@ -49,15 +56,16 @@ export default function Login() {
                     <div className='form__remember'>
                         <label>Remember password?</label>
                         
-                        <input
+                        <Input
                             type="checkbox"
-                            className='remember'
+                            className="checked"
+                            checked={rememberMe}
+                            setValue={setRememberMe}
                         />
                     </div>
 
                 <div className='form__button'>
-                    <button className="login-button" type="submit" onClick={() => dispatch(login(email, password))}>Login</button>
-                    <a className="forgot-button"  href='#'>Forgot Password?</a>
+                    <button className="login-button" type='submit'>Login</button>
                 </div>
             </form>
 

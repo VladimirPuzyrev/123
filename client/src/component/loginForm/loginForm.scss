@@ -1,45 +1,3 @@
-$top: 15px;
-$left: 55px;
-
-@mixin form-input {
-    width: 100%;
-    height: 50%;
-    border: none; 
-    background-color: #39181f;
-    background-repeat:no-repeat;
-    background-position: 3% 0%;
-    padding-left: 40px;
-    margin: 15px;
-    color: white;
-    border-bottom: 1px solid #b78be1;
-
-    &:focus{
-        outline: none;
-    }
-
-    &:focus ~ label,
-    &:not(:placeholder-shown) ~ label{
-        top: $top - 23px;
-        font-size: 14px;
-
-        padding: 0% 1%;
-        background-color: #1f242e;
-        border-radius: 12px;
-    }
-
-    &:invalid{
-        color: red;
-        border-color: red;
-    }
-
-    
-    // &:invalid ~ label{
-    //     top: $top - 22px;
-    //     font-size: 14px;
-    // }
-}
-
-
 
 .login{
     display: flex;
@@ -61,29 +19,6 @@ $left: 55px;
             text-align: center;
         }
         
-        .input-block{
-            position: relative;
-            .form__email{
-                @include form-input();
-                background-image:url('../../../public/email.svg');
-            }
-
-                
-            label{
-                position: absolute;
-                pointer-events: none;
-                transition: 0.5s;
-                top: $top;
-                left: $left;
-            }
-
-            .form__password{
-                @include form-input();
-                background-image:url('../../../public/lock.svg');
-                
-            }
-
-        }
 
 
         .form__remember{
