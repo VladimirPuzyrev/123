@@ -1,5 +1,5 @@
-$top: 15px;
-$left: 55px;
+$top: 1em;
+$left: 1em;
 $background: rgb(33, 34, 37, 0.4);
 
 
@@ -13,9 +13,6 @@ input:-webkit-autofill {
     height: 50%;
     border: none; 
     background-color: transparent;
-    background-repeat:no-repeat;
-    background-position: 3% 0%;
-    padding-left: 40px;
     margin: 15px;
     color: white;
     border-bottom: 1px solid #b78be1;
@@ -26,7 +23,7 @@ input:-webkit-autofill {
 
     &:focus ~ label,
     &:not(:placeholder-shown) ~ label{
-        top: $top - 23px;
+        top: $top - 1.4em;
         font-size: 14px;
 
         padding: 0% 1%;
@@ -35,31 +32,37 @@ input:-webkit-autofill {
     }
 
     &.invalid{
-        background-color: rgb(255, 166, 0);
+        color: red;
     }
 
-    // &:invalid ~ label{
-    //     top: $top - 22px;
-    //     font-size: 14px;
-    // }
+    &.invalid ~ label{
+        background-color: red;
+    }
 }
 
 
 .input-block{
     position: relative;
 
-    .form__login{
+    #form__login{
         @include form-input();
         background-size: 7%;
         background-position: 4% 0%;
     }
 
-    .form__email{
+    #form__email{
         @include form-input();
     }
     
-    .form__password{
+    #form__password{
         @include form-input();
+    }
+
+    .hide-svg{
+        cursor: pointer;
+        position: absolute;
+        right: 0.063em;
+        top: 1.25em;
     }
 
     label{

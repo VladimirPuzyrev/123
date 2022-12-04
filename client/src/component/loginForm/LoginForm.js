@@ -5,9 +5,9 @@ import {Input} from '../Component'
 import {login} from '../../actions/user'
 
 export default function Login() {
-
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
+    const [passwordHide, setPasswordHide] = useState(false)
 
 
     const validationEmail = (email) => {
@@ -19,21 +19,31 @@ export default function Login() {
         }
     }
 
+    function forgotPassword(){
+        //пакет для отправки сообщения и модальное окно
+        
+    }
 
     function onBlur(e){
         e.preventDefault()
+        const label = document.querySelector(`[for="${e.target.id}"]`)
 
         if(e.target.value === validationEmail(email)){
-            e.currentTarget.classList.add('invalid')
+            if(!e.target.value == ''){
+                e.currentTarget.classList.add('invalid')
+                label.textContent = 'Wrong email address';
+            }
         }
 
     }
 
     function onFocus(e){
         e.preventDefault()
+        const label = document.querySelector(`[for="${e.target.id}"]`)
 
         if(e.target.classList.contains('invalid')){
             e.currentTarget.classList.remove('invalid')
+            label.textContent = 'Enter email address';
         }
 
     }
@@ -56,7 +66,7 @@ export default function Login() {
                     <div className='input-block'>
                         <Input
                             type="email"
-                            className="form__email"
+                            id="form__email"
                             placeholder=''
                             value={email}
                             setValue={setEmail}
@@ -65,18 +75,24 @@ export default function Login() {
                             required
                         />
 
-                        <label>Enter email</label>
+                        <label for='form__email'>Enter email</label>
                     </div>
 
 
                     <div className='input-block'>
                     <Input
-                        type="password"
-                        className="form__password"
+                        type={passwordHide ? "text" : "password"}
+                        id="form__password"
                         placeholder=' '
                         value={password}
                         setValue={setPassword}
                         required
+                    />
+                    <img
+                        className='hide-svg'
+                        src={passwordHide ? './password_hide.svg' : './password_visibality.svg'}
+                        onClick={() => setPasswordHide(prevState => !prevState)}
+                        title={passwordHide ? "Hide password" : "Show password"}
                     />
 
                         <label>Enter password</label>
@@ -93,7 +109,7 @@ export default function Login() {
 
                 <div className='form__button'>
                     <button className="login-button" type="submit">Login</button>
-                    <a className="forgot-button"  href='#'>Forgot Password?</a>
+                    <a className="forgot-button" onClick={() => forgotPassword()}>Forgot Password?</a>
                 </div>
             </form>
 

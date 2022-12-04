@@ -9,7 +9,7 @@ const Input = (props) => {
             value={props.value}
             type={props.type}
             placeholder={props.placeholder}
-            className={props.className}
+            id={props.id}
             onBlur={props.onBlur}
             onFocus={props.onFocus}
             requred
