@@ -7,31 +7,41 @@ const config = require('config')
 
 const router = new Router();
 
+const valid = /[\!\@\#\$\%\^\&\*\(\)\+\"\№\;\%\:\?\*]/
 
 router.post('/registration',
     [
-        check('login', "NON-login"),
+        check('login')
+            .isLength({min:3, max:25})
+            .custom(login => {
+                if(!login.match(valid)){
+                    return login
+                }
+            })
+            ,
+
         check('email', "NON-email").isEmail(),
         check('password', "password > 3 and < 12").isLength({min:3, max:12})
     ],
 
     async (req, res) => {
         try{
-            console.log('1')
             console.log(req.body)
             const errors = validationResult(req)
             
-            if(!errors.isEmpty()){
-                return res.status(111).json({message:"Uncorrect fields", errors})
+            if(!errors.hasOwnProperty('msg') == true){
+                return res.json({message: `Unvalid login`})
             }
+
             const {login, email, password} = req.body
             const candidate = await User.findOne({login, email})
 
             if (candidate){
-                return res.status(400).json({message: `Users with this alredy exist`})
+                return res.json({message: `Users with this alredy exist`})
             }
 
             console.log('прошел')
+            
             const saltPassword = await bcrypt.hash(password, 8)
             const user = new User({login, email, password: saltPassword})
 
@@ -78,5 +88,7 @@ router.post('/login',
         }
 })
 
+router.get('/users',
+)
 
 module.exports = router

@@ -2,18 +2,27 @@ import React, { useState, useEffect } from 'react'
 import './RegistrationForm.scss'
 import {Input} from '../Component'
 import { Link } from 'react-router-dom';
-import { registration } from '../../actions/user'
-export default function RegstrarionForm() {
+import { Registration } from '../../actions/user'
+
+
+export default function RegistrarionForm() {
     
     const [login, setLogin] = useState()
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
 
+    function formSend(e){
+        e.preventDefault()
+
+        Registration(login, email, password)
+}
 
     return (
         <div className='registrations'>
             <form 
                 className="email-registration"
+                id='reg'
+                onSubmit={formSend}
             >
                 <Link to='/login'className='back_login'><img src="./back.svg"/></Link>
 
@@ -57,20 +66,9 @@ export default function RegstrarionForm() {
                     <label>Enter password</label>
                 </div>  
 
-
-                <div className='input-block'>
-                    <input
-                        type="password"
-                        className="form__сonfirm"
-                        placeholder=' '
-                    />
-
-                    <label>Confirm password</label>
-                </div>
-        
             </form>
 
-            <button className='register' onClick={() => registration(login, email, password)} type='submit'>REGISTER</button>
+            <button className='register' form='reg'>REGISTER</button>
         </div>
     );
   };

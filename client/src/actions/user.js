@@ -1,20 +1,21 @@
 import axios from 'axios'
 
-export const registration = async (login, email, password) => {
+export const Registration = async (login, email, password, error) => {
+    console.log(login,'|', email,'|', password,'|')
     try{
         const responce = await axios.post(`http://localhost:2228/api/auth/registration`, {
-            login,
-            email,
-            password
+            login: login,
+            email: email,
+            password: password
         })
-        alert(responce.data.message)
+        alert(responce.date)
     }catch(e){
-        alert('Данный пользователь уже зарегестрирован')
+        alert(e)
     }
 }
 
 export const login =  (email, password) => {
-    return async dispatch => {
+    return async (dispatch) => {
         try {
             const response = await axios.post(`http://localhost:2228/api/auth/login`, {
                 email,

@@ -1,6 +1,12 @@
 $top: 15px;
 $left: 55px;
+$background: rgb(33, 34, 37, 0.4);
 
+
+input:-webkit-autofill { 
+    -webkit-background-clip: text;
+    background-clip: text;
+}
 
 @mixin form-input {
     width: 100%;
@@ -24,45 +30,36 @@ $left: 55px;
         font-size: 14px;
 
         padding: 0% 1%;
-        background-color: transparent;
+        background-color: #b78be1;
         border-radius: 12px;
     }
 
-    &:invalid{
-        color: red;
-        border-color: red;
+    &.invalid{
+        background-color: rgb(255, 166, 0);
     }
 
-    
     // &:invalid ~ label{
     //     top: $top - 22px;
     //     font-size: 14px;
     // }
 }
 
+
 .input-block{
     position: relative;
 
     .form__login{
         @include form-input();
-        background-image:url('../../../public/login.svg');
         background-size: 7%;
         background-position: 4% 0%;
     }
 
     .form__email{
         @include form-input();
-        background-image:url('../../../public/email.svg');
     }
     
     .form__password{
         @include form-input();
-        background-image:url('../../../public/lock.svg'); 
-    }
-
-    .form__сonfirm{
-        @include form-input();
-        background-image:url('../../../public/lock.svg'); 
     }
 
     label{

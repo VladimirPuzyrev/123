@@ -2,20 +2,54 @@ import React, { useState } from 'react';
 import './loginForm.scss'
 import { Link } from 'react-router-dom';
 import {Input} from '../Component'
-import {useDispatch} from 'react-redux'
 import {login} from '../../actions/user'
 
 export default function Login() {
 
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
-    const dispatch = useDispatch()
+    const [email, setEmail] = useState()
+    const [password, setPassword] = useState()
 
-    console.log(email)
+
+    const validationEmail = (email) => {
+        if(!String(email)
+        .match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)){
+            return email
+        }else{
+            return true
+        }
+    }
+
+
+    function onBlur(e){
+        e.preventDefault()
+
+        if(e.target.value === validationEmail(email)){
+            e.currentTarget.classList.add('invalid')
+        }
+
+    }
+
+    function onFocus(e){
+        e.preventDefault()
+
+        if(e.target.classList.contains('invalid')){
+            e.currentTarget.classList.remove('invalid')
+        }
+
+    }
+
+
+    function formSend(e){
+        e.preventDefault()
+
+    }
+
+
     return (
         <div className='login'>
             <form 
                 className="email-login"
+                onSubmit={formSend}
                 >
                 <h3>Sign Up</h3>
 
@@ -23,9 +57,11 @@ export default function Login() {
                         <Input
                             type="email"
                             className="form__email"
-                            placeholder=' '
+                            placeholder=''
                             value={email}
                             setValue={setEmail}
+                            onBlur={onBlur}
+                            onFocus={onFocus}
                             required
                         />
 
@@ -56,7 +92,7 @@ export default function Login() {
                     </div>
 
                 <div className='form__button'>
-                    <button className="login-button" type="submit" onClick={() => dispatch(login(email, password))}>Login</button>
+                    <button className="login-button" type="submit">Login</button>
                     <a className="forgot-button"  href='#'>Forgot Password?</a>
                 </div>
             </form>

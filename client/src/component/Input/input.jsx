@@ -10,6 +10,8 @@ const Input = (props) => {
             type={props.type}
             placeholder={props.placeholder}
             className={props.className}
+            onBlur={props.onBlur}
+            onFocus={props.onFocus}
             requred
         />
     )
