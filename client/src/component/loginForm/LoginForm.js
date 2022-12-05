@@ -3,21 +3,13 @@ import './loginForm.scss'
 import { Link } from 'react-router-dom';
 import {Input} from '../Component'
 import {login} from '../../actions/user'
+import { Validation } from '../Validation';
 
 export default function Login() {
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
     const [passwordHide, setPasswordHide] = useState(false)
-
-
-    const validationEmail = (email) => {
-        if(!String(email)
-        .match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)){
-            return email
-        }else{
-            return true
-        }
-    }
+    const validEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
     function forgotPassword(){
         //пакет для отправки сообщения и модальное окно
@@ -28,7 +20,7 @@ export default function Login() {
         e.preventDefault()
         const label = document.querySelector(`[for="${e.target.id}"]`)
 
-        if(e.target.value === validationEmail(email)){
+        if(e.target.value === Validation(email, validEmail)){
             if(!e.target.value == ''){
                 e.currentTarget.classList.add('invalid')
                 label.textContent = 'Wrong email address';

@@ -12,13 +12,7 @@ const valid = /[\!\@\#\$\%\^\&\*\(\)\+\"\№\;\%\:\?\*]/
 router.post('/registration',
     [
         check('login')
-            .isLength({min:3, max:25})
-            .custom(login => {
-                if(!login.match(valid)){
-                    return login
-                }
-            })
-            ,
+            .isLength({max:25}),
 
         check('email', "NON-email").isEmail(),
         check('password', "password > 3 and < 12").isLength({min:3, max:12})
@@ -29,6 +23,8 @@ router.post('/registration',
             console.log(req.body)
             const errors = validationResult(req)
             
+            console.log('123')
+
             if(!errors.hasOwnProperty('msg') == true){
                 return res.json({message: `Unvalid login`})
             }

@@ -3,55 +3,30 @@ import './RegistrationForm.scss'
 import {Input} from '../Component'
 import { Link } from 'react-router-dom';
 import { Registration } from '../../actions/user'
-
+import { Invalid, Validation } from '../Validation';
 export default function RegistrarionForm() {
     
     const [login, setLogin] = useState()
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
     const [passwordHide, setPasswordHide] = useState(false)
+    
+    const validEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    const validLogin = /^[a-zA-Z]*$/
 
-    const validationEmail = (email) => {
-        if(!String(email)
-        .match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)){
-            return email
-        }else{
-            return true
-        }
-    }
-
-    const validationLogin = (login) => {
-        if(!String(login)
-        .match(/[\!\@\#\$\%\^\&\*\(\)\+\"\№\;\%\:\?\*]/)){
-            return login
-        }else{
-            return true
-        }
-    }
+    const perfEmail = Validation(email, validEmail)
+    const perfLogin = Validation(login, validLogin)
 
     function onBlur(e){
         e.preventDefault()
-
         const label = document.querySelector(`[for="${e.target.id}"]`)
-        if(e.target.id === 'form__email'){
-            if(!e.target.value == ''){
-                if(e.target.value === validationEmail(email)){
-                    e.currentTarget.classList.add('invalid')
-                    label.textContent = 'Wrong email address';
-                }
-            }
 
-        }else if(e.target.id === 'form__login'){
+        Invalid(e, 'form__login', perfLogin, label, 'Login must not have special characters')
+        Invalid(e, 'form__email', perfEmail, label, 'Wrong email address')
+    
+        if(e.target.id === 'form__password'){
             if(!e.target.value == ''){
-                if(e.target.value === validationLogin(login)){
-                    e.currentTarget.classList.add('invalid')
-                    label.textContent = 'Login must not have special characters';
-                }
-            }
-
-        }else if(e.target.id === 'form__password'){
-            if(!e.target.value == ''){
-                if(e.target.value.lenght < 8){
+                if(e.target.value.length < 8){
                     e.currentTarget.classList.add('invalid')
                     label.textContent = 'Password must not be shorter than 8 characters';
                 }
@@ -63,7 +38,7 @@ export default function RegistrarionForm() {
     function onFocus(e){
         e.preventDefault()
         const label = document.querySelector(`[for="${e.target.id}"]`)
-    
+
         if(e.target.classList.contains('invalid')){
             e.currentTarget.classList.remove('invalid')
 
@@ -82,15 +57,7 @@ export default function RegistrarionForm() {
     function formSend(e){
         e.preventDefault()
 
-        if(email === validationEmail(email)){
-            return alert('Wrong email!')
-        }else if(password.lenght <= 8){
-            return alert('Short password!')
-        }else if(login === validationLogin(login)){
-            return alert('Wrong email!')
-        }
-
-        Registration(email, login, password)
+        Registration(login, email,  password)
     }
 
     return (
@@ -98,7 +65,7 @@ export default function RegistrarionForm() {
             <Link to='/login' className='back_login'><img src="./back.svg"/></Link>
 
             <form 
-                className="email-registration"
+                id="email-registration"
                 onSubmit={formSend}
             >
 
@@ -158,7 +125,7 @@ export default function RegistrarionForm() {
 
             </form>
 
-            <button className='register' form='reg'>REGISTER</button>
+            <button className='register' form='email-registration'>REGISTER</button>
         </div>
     );
   };
