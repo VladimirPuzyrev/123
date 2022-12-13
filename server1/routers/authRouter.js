@@ -4,16 +4,15 @@ const {check, validationResult} = require("express-validator")
 const jwt = require('jsonwebtoken');
 const User = require('../models/Users.js');
 const config = require('config')
+const authMiddleware = require('../middleware/auth.middleware')
 
 const router = new Router();
 
-const valid = /[\!\@\#\$\%\^\&\*\(\)\+\"\№\;\%\:\?\*]/
 
 router.post('/registration',
-    [
-        check('login')
-            .isLength({max:25}),
 
+    [
+        check('login').isLength({max:25}),
         check('email', "NON-email").isEmail(),
         check('password', "password > 3 and < 12").isLength({min:3, max:12})
     ],
@@ -25,15 +24,15 @@ router.post('/registration',
             
             console.log('123')
 
-            if(!errors.hasOwnProperty('msg') == true){
-                return res.json({message: `Unvalid login`})
+            if (!errors.isEmpty()) {
+                return res.status(400).json({message: "Uncorrect request", errors})
             }
 
             const {login, email, password} = req.body
             const candidate = await User.findOne({login, email})
 
             if (candidate){
-                return res.json({message: `Users with this alredy exist`})
+                return res.status(400).json({message: `User with email ${email} already exist`})
             }
 
             console.log('прошел')
@@ -50,23 +49,18 @@ router.post('/registration',
 })
 
 router.post('/login',
-
     async (req, res) => {
-        try{
-            const {login, email, password} = req.body
+        try {
+            const {email, password} = req.body
+            const user = await User.findOne({email})
 
-            const user = await User.findOne({login, email})
-
-            if(!user){
+            if (!user) {
                 return res.status(404).json({message: "User not found"})
             }
-
             const isPassValid = bcrypt.compareSync(password, user.password)
-
-            if(!isPassValid){
-                return res.status(400).json({message: "Invalid Password"})
+            if (!isPassValid) {
+                return res.status(400).json({message: "Invalid password"})
             }
-
             const token = jwt.sign({id: user.id}, config.get("secretKey"), {expiresIn: "1h"})
 
             return res.json({
@@ -82,9 +76,28 @@ router.post('/login',
         }catch(e){
             console.log(e)
         }
+        
 })
 
-router.get('/users',
-)
+router.get('/auth', authMiddleware,
+    async (req, res) => {
+        try {
+            const user = await User.findOne({_id: req.user.id})
+            const token = jwt.sign({id: user.id}, config.get("secretKey"), {expiresIn: "1h"})
+            return res.json({
+                token,
+                user: {
+                    id: user.id,
+                    email: user.email,
+                    diskSpace: user.diskSpace,
+                    usedSpace: user.usedSpace,
+                    avatar: user.avatar
+                }
+            })
+        } catch (e) {
+            console.log(e)
+            res.send({message: "Server error"})
+        }
+})
 
 module.exports = router

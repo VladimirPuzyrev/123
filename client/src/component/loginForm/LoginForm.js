@@ -2,19 +2,17 @@ import React, { useState } from 'react';
 import './loginForm.scss'
 import { Link } from 'react-router-dom';
 import {Input} from '../Component'
-import {login} from '../../actions/user'
+import {LoginAut} from '../../actions/user'
+import {useDispatch} from 'react-redux'
 import { Validation } from '../Validation';
 
 export default function Login() {
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
     const [passwordHide, setPasswordHide] = useState(false)
-    const validEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    const dispatch = useDispatch()
 
-    function forgotPassword(){
-        //пакет для отправки сообщения и модальное окно
-        
-    }
+    const validEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
     function onBlur(e){
         e.preventDefault()
@@ -44,6 +42,7 @@ export default function Login() {
     function formSend(e){
         e.preventDefault()
 
+        dispatch(LoginAut(email, password))
     }
 
 
@@ -101,7 +100,6 @@ export default function Login() {
 
                 <div className='form__button'>
                     <button className="login-button" type="submit">Login</button>
-                    <a className="forgot-button" onClick={() => forgotPassword()}>Forgot Password?</a>
                 </div>
             </form>
 

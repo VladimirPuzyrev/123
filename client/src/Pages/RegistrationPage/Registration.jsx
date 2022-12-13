@@ -9,11 +9,6 @@ function Registration() {
 
   return (
     <div className='page'>
-      <header>
-        <span>Be</span>
-          <a><img/></a>
-        <span>Up</span>
-      </header>
 
       <section className='registration'>
 

@@ -1,6 +1,6 @@
 $top: 1em;
 $left: 1em;
-$background: rgb(33, 34, 37, 0.4);
+$background: #21222566;
 
 
 input:-webkit-autofill { 
@@ -13,7 +13,6 @@ input:-webkit-autofill {
     height: 50%;
     border: none; 
     background-color: transparent;
-    margin: 15px;
     color: white;
     border-bottom: 1px solid #b78be1;
 
@@ -44,18 +43,30 @@ input:-webkit-autofill {
 .input-block{
     position: relative;
 
+    #form__text{
+        @include form-input();
+        margin-top: 1em;
+        margin-bottom: 1em;
+        margin-right: 1em;
+        padding-left: 1em;
+        
+    }
+
     #form__login{
         @include form-input();
+        margin: 1em;
         background-size: 7%;
         background-position: 4% 0%;
     }
 
     #form__email{
         @include form-input();
+        margin: 1em;
     }
     
     #form__password{
         @include form-input();
+        margin: 1em;
     }
 
     .hide-svg{
