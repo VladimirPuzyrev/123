@@ -11,7 +11,7 @@ export const Registration = async (login, email, password) => {
         })
         alert(responce.date.message)
     }catch(e){     
-        alert(e.response.data.message)
+        alert(e)
     }
 }
 
@@ -25,7 +25,7 @@ export const LoginAut =  (email, password) => {
             dispatch(setUser(response.data.user))
             localStorage.setItem('token', response.data.token)
         } catch (e) {
-            alert(e.response.data.message)
+            alert(e)
         }
     }
 }
@@ -39,7 +39,7 @@ export const auth =  () => {
             dispatch(setUser(response.data.user))
             localStorage.setItem('token', response.data.token)
         } catch (e) {
-            alert(e.response.data.message)
+            alert(e)
             localStorage.removeItem('token')
         }
     }

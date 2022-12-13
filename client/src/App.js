@@ -13,6 +13,7 @@ function App() {
   if(isAuth){
     console.log('asd')
   }
+  
   useEffect(() => {
       dispatch(auth())
   }, [])
@@ -27,16 +28,15 @@ function App() {
               <Route index element={<Welcome />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/registration" element={<Registration />} />
+              <Route path='/main' element={<Navigate to='/' />} />
             </Route>
           </Routes> 
         }
 
         {isAuth &&
           <Routes>
-            <Route path='/' element={<Header />}>
-                <Route index element={<Welcome />} />
-                <Route path='login' element={<Navigate to='/' />} />
-            </Route> 
+            <Route path="/main" element={<MainPage />} />
+            <Route path='/login' element={<Navigate to='/main' />} />
           </Routes> 
         }
       </div>
