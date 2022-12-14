@@ -6,7 +6,7 @@ $left: 55px;
     flex-direction: column;
     color: white;
     border-radius: 10px 10px 0px 0px;
-    background-color:rgb(33, 34, 37, 0.4);
+    background-color:rgba(33, 34, 37, 0.4);
 
     .email-login{
         width: 50%;
@@ -45,7 +45,6 @@ $left: 55px;
                 font: inherit;
                 cursor: pointer;
                 outline: inherit;
-
 
                 width: 50%;
                 padding: 1% 15%;

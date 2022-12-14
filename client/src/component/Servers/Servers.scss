@@ -1,0 +1,27 @@
+.servers-panel{
+    height: 100%;
+    width: 6%;
+    background-color: #161819;
+    border-right: 1px solid black;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .personal{
+        height: 14%;
+        padding: 5% 25%;
+        border-bottom: 1px solid black;
+    }
+
+    .servers{
+        height: 76%;
+        padding: 5% 25%;
+        border-bottom: 1px solid black;
+    }
+
+    .settings{
+        height: 10%;
+        padding: 5% 25%;
+    }
+}

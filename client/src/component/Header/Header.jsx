@@ -11,18 +11,21 @@ export default function Header() {
     const isAuth = useSelector(state => state.user.isAuth)
     const dispatch = useDispatch()
 
-
     return(
         <>
             <header>
-                <span>Be</span>
-                <a><img/></a>
-                <span>Up</span>
+                <div className='logo'>
+                    <span>Be</span>
+                    <a><img/></a>
+                    <span>Up</span>
+                </div>
 
-                {!isAuth && <Link to='/'>Weclome</Link>}
-                {!isAuth && <Link to='/login'>Login</Link>}
-                {!isAuth && <Link to='/registration'>Registration</Link>}
-                {isAuth && <a onClick={() => dispatch(logout())}>Exit</a>}
+                <nav className='nav-link'>
+                    {!isAuth && <Link to='/'>Weclome</Link>}
+                    {!isAuth && <Link to='/login'>Login</Link>}
+                    {!isAuth && <Link to='/registration'>Registration</Link>}
+                    {isAuth && <a onClick={() => dispatch(logout())}>Exit</a>}
+                </nav>
             </header>
 
             <Outlet />

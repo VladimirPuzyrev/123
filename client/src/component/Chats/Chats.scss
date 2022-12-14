@@ -1,0 +1,41 @@
+.chats-panel{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 20%;
+    border-right: 1px solid black;
+
+    button{
+        color: inherit;
+        border: none;
+        padding: 0;
+        font: inherit;
+        cursor: pointer;
+        outline: inherit;
+
+        width: 100%;
+        height: 5%;
+        padding: 1% 15%;
+        margin-right: 2%;
+        background-image: linear-gradient(to right, rgb(129, 88, 169) 0%, #f0c1ff  90%);
+        box-shadow: 0 0 15px rgb(129, 88, 169, 0.8);
+        transition: 0.4s;
+        background-size: 200% auto;
+        color: white;         
+        text-align: center;
+        text-decoration: none;
+    }
+
+    h2{
+        height: 4%;
+        font-size: 1em;
+        text-align: center;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid black;
+    }
+
+    .chats{
+        height: 96%;
+
+    }
+}

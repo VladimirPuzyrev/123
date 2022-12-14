@@ -62,7 +62,7 @@ export default function RegistrarionForm() {
 
     return (
         <div className='registrations'>
-            <Link to='/login' className='back_login'><img src="./back.svg"/></Link>
+            <Link to='/login' className='back_login'><img src="./svg/back.svg"/></Link>
 
             <form 
                 id="email-registration"
@@ -115,7 +115,7 @@ export default function RegistrarionForm() {
 
                         <img
                             className='hide-svg'
-                            src={passwordHide ? './password_visibality.svg' : './password_hide.svg'}
+                            src={passwordHide ? './svg/password_visibality.svg' : './svg/password_hide.svg'}
                             onClick={() => setPasswordHide(prevState => !prevState)}
                             title={passwordHide ? "Hide password" : "Show password"}
                         />

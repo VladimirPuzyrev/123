@@ -81,7 +81,7 @@ export default function Login() {
                     />
                     <img
                         className='hide-svg'
-                        src={passwordHide ? './password_hide.svg' : './password_visibality.svg'}
+                        src={passwordHide ? './svg/password_hide.svg' : './svg/password_visibality.svg'}
                         onClick={() => setPasswordHide(prevState => !prevState)}
                         title={passwordHide ? "Hide password" : "Show password"}
                     />

@@ -29,6 +29,9 @@ function Welcome(){
 
             <section className='news'>
                 <h1>News</h1>
+
+                <button type='Submit'>Create Chats</button>
+                
             </section>
 
             <footer>

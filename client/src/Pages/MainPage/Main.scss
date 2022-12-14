@@ -7,55 +7,6 @@
     color: white;
     font-size: 1.5em;
 
-    .servers-panel{
-        height: 100%;
-        width: 6%;
-        background-color: #161819;
-        border-right: 1px solid black;
-
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        .personal{
-            height: 14%;
-            padding: 5% 25%;
-            border-bottom: 1px solid black;
-        }
-
-        .servers{
-            height: 76%;
-            padding: 5% 25%;
-            border-bottom: 1px solid black;
-        }
-
-        .settings{
-            height: 10%;
-            padding: 5% 25%;
-        }
-    }
-
-    .chats-panel{
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-        width: 20%;
-        border-right: 1px solid black;
-
-        h2{
-            height: 4%;
-            font-size: 1em;
-            text-align: center;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid black;
-        }
-
-        .chats{
-            height: 96%;
-
-        }
-    }
-
     .main{
         display: flex;
         flex-direction: column;

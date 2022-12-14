@@ -32,10 +32,30 @@
         width: 100%;
         min-height: 65vh;
         display: flex;
+        flex-direction: column;
         border: 1px solid black;
 
         justify-content: center;
         align-items: center;
+
+        button{
+            color: inherit;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            outline: inherit;
+    
+            width: 10%;
+            height: 5%;
+            padding: 1% 5%;
+            background-image: linear-gradient(to right, rgb(129, 88, 169) 0%, #f0c1ff  90%);
+            box-shadow: 0 0 15px rgb(129, 88, 169, 0.8);
+            transition: 0.4s;
+            background-size: 200% auto;
+            color: white;         
+            text-align: center;
+            text-decoration: none;
+        }
     }
 
     footer{
