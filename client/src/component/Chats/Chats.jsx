@@ -2,9 +2,11 @@ import React from 'react'
 import './Chats.scss'
 
 import { Outlet } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 
 export default function Chats() {
+
   return (
     <>
         <section className='chats-panel'>

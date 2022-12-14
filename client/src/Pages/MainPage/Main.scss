@@ -14,11 +14,11 @@
         height: 100%;
         width: 55%;
 
-        border-right: 1px solid black;
+        border-right: 1px solid rgb(129, 88, 169);
         .top-panel{
             display: flex;
             height: 4%;
-            border-bottom: 1px solid black;
+            border-bottom: 1px solid rgb(129, 88, 169);
             justify-content: space-between;
             
             h2{
@@ -30,7 +30,7 @@
 
         .messages-fill{
             background-color: #161819;
-            border-bottom: 1px solid black;
+            border-bottom: 1px solid rgb(129, 88, 169);
             height: 90%;
 
         }
@@ -78,7 +78,7 @@
             font-size: 1em;
             text-align: center;
             padding-bottom: 0.5rem;
-            border-bottom: 1px solid black;
+            border-bottom: 1px solid rgb(129, 88, 169);
         }
     }
 }

@@ -89,14 +89,6 @@ export default function Login() {
                         <label>Enter password</label>
                     </div>
                     
-                    <div className='form__remember'>
-                        <label>Remember password?</label>
-                        
-                        <input
-                            type="checkbox"
-                            className='remember'
-                        />
-                    </div>
 
                 <div className='form__button'>
                     <button className="login-button" type="submit">Login</button>

@@ -7,12 +7,12 @@ import {auth} from "./actions/user";
 
 
 function App() {
-  const isAuth = useSelector(state => state.user.isAuth)
-  const dispatch = useDispatch()
+    const isAuth = useSelector(state => state.user.isAuth)
+    const dispatch = useDispatch()
 
-  useEffect(() => {
-      dispatch(auth())
-  }, [])
+    useEffect(() => {
+        dispatch(auth())
+    }, [])
 
 
   return (
@@ -24,7 +24,9 @@ function App() {
               <Route index element={<Welcome />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/registration" element={<Registration />} />
+              <Route path='/profile' element={<Navigate to='/' />} />
               <Route path='/main' element={<Navigate to='/' />} />
+              <Route path='/chats' element={<Navigate to='/' />} />
             </Route>
           </Routes> 
         }

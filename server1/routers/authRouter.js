@@ -31,7 +31,7 @@ router.post('/registration',
             const {login, email, password} = req.body
             const candidate = await User.findOne({login, email})
 
-            if (candidate){
+            if(!candidate){
                 return res.status(400).json({message: `User with email ${email} already exist`})
             }
 
@@ -88,9 +88,8 @@ router.get('/auth', authMiddleware,
                 token,
                 user: {
                     id: user.id,
+                    login: user.login,
                     email: user.email,
-                    diskSpace: user.diskSpace,
-                    usedSpace: user.usedSpace,
                     avatar: user.avatar
                 }
             })

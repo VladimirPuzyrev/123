@@ -5,9 +5,7 @@ import { useSelector } from 'react-redux';
 import './ProfilePage.scss'
 
 function MainPage(){
-    const isAuth = useSelector(state => state.user.value)
-    console.log(isAuth)
-
+    let login = useSelector(state => state.user.currentUser.login)
     return(
         <div className='main-page'>
 
@@ -16,7 +14,7 @@ function MainPage(){
 
             <section className='main'>
                 <div className='top-panel'>
-                    <h2>`Hello, {userReducer.currentUser}`</h2>
+                    <h2>Hello, {login}</h2>
                 </div>
 
                 <div className='messages-fill'>
