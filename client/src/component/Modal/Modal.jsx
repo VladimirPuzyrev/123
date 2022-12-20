@@ -1,30 +1,35 @@
 import React, {useState, useEffect} from 'react'
 import ReactDOM from 'react-dom'
-import {Server} from '../../actions/servers'
+import { useDispatch } from 'react-redux'
+import {ServerCreate} from '../../actions/servers'
 import {Input, UploadAvatar} from '../Component'
 import './Modal.scss'
 
-const Modal = ({setIsOpen}) => {
+const Modal = ({setAddOpen}) => {
 
-    const [file, setFile] = useState()
+    let [avatar, setAvatar] = useState()
     const [serverName, setServerName] = useState()
 
-    function handlerSubmit(e){
-        e.preventDefault()
-        
-        Server(file, serverName)
-    }
+    // const popupDisplay = useSelector(state => state.files.popupDisplay)
+    // const currentDir = useSelector(state => state.files.currentDir)
+    // const dispatch = useDispatch()
+
+    // function createHandler() {
+    //     dispatch(createDir(currentDir, dirName))
+    // }
+
 
     return(
         ReactDOM.createPortal(
             <div className='modalOverlay'>
                 <div className='modalWindow'>
-                    <a className='close' onClick={() => setIsOpen(false)}>Close</a>
+                    <a className='close' onClick={() => setAddOpen(false)}>Close</a>
 
-                    <form onSubmit={handlerSubmit}>
+                    <form >
                        <input type='file'                                 
-                            value={file}
-                            setValue={setFile}
+                              value={avatar}
+                              setValue={setAvatar}
+                              accept="image/*"
                         />
 
                         <div className='input-block'>

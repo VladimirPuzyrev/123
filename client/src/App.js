@@ -6,14 +6,14 @@ import {useDispatch, useSelector} from "react-redux";
 import {auth} from "./actions/user";
 
 
+
 function App() {
     const isAuth = useSelector(state => state.user.isAuth)
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(auth())
+      dispatch(auth())
     }, [])
-
 
   return (
       <div className='app'>
@@ -22,6 +22,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Header />}>
               <Route index element={<Welcome />} />
+              
               <Route path="/login" element={<LoginPage />} />
               <Route path="/registration" element={<Registration />} />
               <Route path='/profile' element={<Navigate to='/' />} />

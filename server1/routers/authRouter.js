@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/Users.js');
 const config = require('config')
 const authMiddleware = require('../middleware/auth.middleware')
-
+const fs = require('fs')
 const router = new Router();
 
 
@@ -31,7 +31,7 @@ router.post('/registration',
             const {login, email, password} = req.body
             const candidate = await User.findOne({login, email})
 
-            if(!candidate){
+            if(candidate){
                 return res.status(400).json({message: `User with email ${email} already exist`})
             }
 
@@ -39,7 +39,7 @@ router.post('/registration',
             
             const saltPassword = await bcrypt.hash(password, 8)
             const user = new User({login, email, password: saltPassword})
-
+            
             await user.save()
             return res.json({message: "User successfully created"})
 

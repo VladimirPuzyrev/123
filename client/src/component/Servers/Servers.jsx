@@ -1,20 +1,28 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {Modal, Input} from '../../component/Component.js';
 import { logout } from '../../reducers/userReducer.js';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, Outlet } from 'react-router-dom'
+import { Server } from './Server/Server.jsx'
 
 import './Servers.scss'
 import { ProfilePage } from '../../Pages/Pages.js';
+import { ServerGet } from '../../actions/servers.js';
 
 export default function Servers() {
     const serverList = document.querySelector('.all-servers')
-    const [addOpen, setAddOpen] = useState(false);
-    const [ProfileOpen, setProfileOpen] = useState(false);
-
-    const isAuth = useSelector(state => state.user.isAuth)
     const dispatch = useDispatch()
-    
+
+    const servers = useSelector(state => state.server.servers).map(server => <Server key={server.id} server={server}/>)
+
+    useEffect(() => {
+        dispatch(ServerGet())
+    }, [])
+
+    // function showPopupHandler() {
+    //     dispatch(setPopupDisplay('flex'))
+    // }
+
 
     return(
         <>
@@ -26,10 +34,10 @@ export default function Servers() {
 
                 <div className='servers'>
                     <ul className='all-servers'>
-                        {}
+                        {servers}
                     </ul>
-                    <a className='add-server' onClick={() => setAddOpen(true)}> <img src='./svg/Add.svg'/> </a>
-                    {addOpen && <Modal setAddOpen={setAddOpen} />}
+                    <a className='add-server'> <img src='./svg/Add.svg'/> </a>
+                    {/* {addOpen && <Modal setAddOpen={setAddOpen} />} */}
 
                 </div>
 

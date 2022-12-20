@@ -5,6 +5,7 @@ const defaultState = {
     currentUser: {},
     isAuth: false
 }
+
 export function userReducer(state = defaultState, action) {
     switch (action.type) {
         case SET_USER:
