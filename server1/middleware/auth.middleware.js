@@ -9,13 +9,12 @@ module.exports = (req, res, next) => {
     try {
         const token = req.headers.authorization.split(' ')[1]
         if (!token) {
-            return res.json({message: 'Auth error'})
+            return res.status(401).json({message: 'Auth error'})
         }
         const decoded = jwt.verify(token, config.get('secretKey'))
         req.user = decoded
-
         next()
     } catch (e) {
-        return res.json({message: `${e}`})
+        return res.status(401).json({message: 'Auth error'})
     }
 }

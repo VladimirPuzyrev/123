@@ -33,7 +33,7 @@ function Welcome(){
             </section>
 
             <footer>
-                <a href="#" ><img alt='tg' src='./Telegram_Logo.svg' width='3%'/>Telegram</a>
+                <a href="https://t.me/Puzyrev2003" ><img alt='tg' src='svg/Telegram_Logo.svg' width='3%'/>Telegram</a>
                 <span>&copy; Best of the Best </span>
             </footer>
 

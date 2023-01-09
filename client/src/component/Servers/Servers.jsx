@@ -13,16 +13,11 @@ export default function Servers() {
     const serverList = document.querySelector('.all-servers')
     const dispatch = useDispatch()
 
-    const servers = useSelector(state => state.server.servers).map(server => <Server key={server.id} server={server}/>)
-
+    const servers = useSelector(state => state.server.servers).map(server => <Server key={server.id} server={server} avatar={server.avatar} name={server.name} />)
+    const [addOpen, setAddOpen] = useState(false);
     useEffect(() => {
         dispatch(ServerGet())
     }, [])
-
-    // function showPopupHandler() {
-    //     dispatch(setPopupDisplay('flex'))
-    // }
-
 
     return(
         <>
@@ -36,8 +31,8 @@ export default function Servers() {
                     <ul className='all-servers'>
                         {servers}
                     </ul>
-                    <a className='add-server'> <img src='./svg/Add.svg'/> </a>
-                    {/* {addOpen && <Modal setAddOpen={setAddOpen} />} */}
+                    <a className='add-server' onClick={() => setAddOpen(true)}> <img src='./svg/Add.svg'/> </a>
+                    {addOpen && <Modal setAddOpen={setAddOpen} />}
 
                 </div>
 

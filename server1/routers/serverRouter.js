@@ -7,7 +7,7 @@ const authMiddleware = require("../middleware/auth.middleware");
 const router = new Router();
 
 
-router.post('/create',
+router.post('/createserver', authMiddleware,
 
     [
         check('name').isLength({max:25}),
@@ -17,13 +17,12 @@ router.post('/create',
         try{
             console.log(req.body)
             const errors = validationResult(req)
-            console.log('123')
 
             if (!errors.isEmpty()) {
                 return res.status(400).json({message: "Uncorrect request", errors})
             }
 
-            let {name, avatar, user} = req.body
+            let {name, avatar} = req.body
             const link = `BeUp:${name}`
 
             if(avatar === 'default'){
@@ -31,7 +30,7 @@ router.post('/create',
             }
 
             console.log('прошел')
-            const server = new Server({name, avatar, link, user: user})
+            const server = new Server({name, avatar, link, users: req.user.id})
             
             await server.save()
             return res.json({message: "Server successfully created"})
@@ -45,8 +44,7 @@ router.get('/serverlist', authMiddleware,
     async (req, res) => {
         try {
             console.log(req.body)
-            const servers = await Server.find({user: req.user.id})
-            console.log(servers)
+            const servers = await Server.find({users: req.user.id})
             return res.json(servers)
         } catch (e) {
             console.log(e)

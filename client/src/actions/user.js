@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {setUser} from "../reducers/userReducer";
+import {editUser, setUser} from "../reducers/userReducer";
 
 export const Registration = async (login, email, password) => {
     console.log(login,'|', email,'|', password,'|')
@@ -9,7 +9,6 @@ export const Registration = async (login, email, password) => {
             email: email,
             password: password
         })
-        alert(responce.date.message)
     }catch(e){     
         alert(e)
     }
@@ -43,6 +42,26 @@ export const auth =  () => {
                 dispatch(setUser(response.data.user))
                 localStorage.setItem('token', response.data.token)
             }
+        } catch (e) {
+            alert(e.response.data.message)
+            localStorage.removeItem('token')
+        }
+    }
+}
+
+export const edit = (login, email, password) => {
+    return async dispatch => {
+        try {
+            const response = await axios.put(`http://localhost:2228/api/auth/profile`, {
+                login: login,
+                email: email,
+                password: password
+            }, {
+                headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}
+            })
+
+            dispatch(editUser(response.data.user))
+
         } catch (e) {
             alert(e.response.data.message)
             localStorage.removeItem('token')

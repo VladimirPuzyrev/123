@@ -1,4 +1,5 @@
 import React from 'react'
+import './Server.scss'
 
 export function Server(props) {
   return (

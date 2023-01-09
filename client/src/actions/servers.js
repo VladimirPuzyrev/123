@@ -14,18 +14,18 @@ export const ServerGet = () => {
     }
 }
 
-// export const ServerCreate = (name, avatar) => {
-//     return async dispatch => {
-//             try{
-//                 const response = await axios.post(`http://localhost:2228/api/server/create`, {
-//                     name: name,
-//                     avatar: avatar,
-//             }, {
-//                 headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}
-//             })
-//             dispatch(addServer(response.data))
-//         }catch(e){
-//             alert(e)
-//         }
-//     }
-// }
+export const ServerCreate = (name) => {
+    return async dispatch => {
+            try{
+                const response = await axios.post(`http://localhost:2228/api/server/createserver`, {
+                    name: name,
+                    avatar: 'default',
+            }, {
+                headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}
+            })
+            dispatch(addServer(response.data))
+        }catch(e){
+            alert(e)
+        }
+    }
+}

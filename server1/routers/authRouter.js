@@ -99,4 +99,30 @@ router.get('/auth', authMiddleware,
         }
 })
 
+router.put('/profile', authMiddleware,
+async (req, res) => {
+
+    try {
+        const user = await User.findOne({_id: req.user.id})
+        const {login, email, password} = req.body
+        
+        user.login = login
+        user.email = email
+        const saltPassword = await bcrypt.hash(password, 8)
+        user.password = saltPassword
+        await user.save()
+        return res.json({
+            user: {
+                id: user.id,
+                login: user.login,
+                email: user.email,
+                avatar: user.avatar
+            }
+        })
+    } catch (e) {
+        console.log(e)
+        res.send({message: "hui"})
+    }
+})
+
 module.exports = router

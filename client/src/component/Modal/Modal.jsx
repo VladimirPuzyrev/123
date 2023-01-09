@@ -7,16 +7,14 @@ import './Modal.scss'
 
 const Modal = ({setAddOpen}) => {
 
-    let [avatar, setAvatar] = useState()
     const [serverName, setServerName] = useState()
+    const dispatch = useDispatch()
 
-    // const popupDisplay = useSelector(state => state.files.popupDisplay)
-    // const currentDir = useSelector(state => state.files.currentDir)
-    // const dispatch = useDispatch()
-
-    // function createHandler() {
-    //     dispatch(createDir(currentDir, dirName))
-    // }
+    function handlerSubmit(e){
+        e.preventDefault()
+        
+        dispatch(ServerCreate(serverName))
+    }
 
 
     return(
@@ -25,12 +23,7 @@ const Modal = ({setAddOpen}) => {
                 <div className='modalWindow'>
                     <a className='close' onClick={() => setAddOpen(false)}>Close</a>
 
-                    <form >
-                       <input type='file'                                 
-                              value={avatar}
-                              setValue={setAvatar}
-                              accept="image/*"
-                        />
+                    <form onSubmit={handlerSubmit}>
 
                         <div className='input-block'>
                             <Input
