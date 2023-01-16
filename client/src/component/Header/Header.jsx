@@ -9,6 +9,7 @@ import './Header.scss'
 export default function Header() {
 
     const isAuth = useSelector(state => state.user.isAuth)
+    const role = useSelector(state => state.user.currentUser.role)
     const dispatch = useDispatch()
 
     return(
@@ -25,6 +26,7 @@ export default function Header() {
                     {!isAuth && <Link to='/login'>Login</Link>}
                     {!isAuth && <Link to='/registration'>Registration</Link>}
                     {isAuth && <a onClick={() => dispatch(logout())}>Exit</a>}
+                    {(isAuth) && <Link to='/main'>Main</Link>}
                 </nav>
             </header>
 

@@ -1,10 +1,22 @@
-import React from 'react'
-import {Login} from '../../component/Component.js';
+import React, {useEffect, useState} from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { NewsGet } from '../../actions/news.js';
+import AddNewsModal from '../../component/AddNewsModal/AddNewsModal.jsx';
+import { NewsBlock } from '../../component/NewsBlock/NewsBlock.jsx';
+import { Server } from '../../component/Servers/Server/Server.jsx';
 import './Welcome.scss'
 
 
 function Welcome(){
+    const isAuth = useSelector(state => state.user.isAuth)
+    const role = useSelector(state => state.user.currentUser.role)
+    const [addOpen, setAddOpen] = useState(false);
+    const dispatch = useDispatch()
 
+    const news = useSelector(state => state.news.news).map(news => <NewsBlock title={news.title} text={news.text} autor={news.autor}/>)
+    useEffect(() => {
+        dispatch(NewsGet())
+    }, [])
 
 
     return(
@@ -28,8 +40,15 @@ function Welcome(){
             </section>
 
             <section className='news'>
-                <h1>News</h1>
-                
+                <h1 className='nnn'>News</h1>
+                <ul>
+                    {news}
+                </ul>
+
+                {(isAuth && role == 'admin') && 
+                    <a onClick={() => setAddOpen(true)} className='add'>Add News</a>
+                }
+                {addOpen && <AddNewsModal setAddOpen={setAddOpen} />}
             </section>
 
             <footer>

@@ -7,7 +7,8 @@ export const Registration = async (login, email, password) => {
         const responce = await axios.post(`http://localhost:2228/api/auth/registration`, {
             login: login,
             email: email,
-            password: password
+            password: password,
+            role: 'user'
         })
     }catch(e){     
         alert(e)

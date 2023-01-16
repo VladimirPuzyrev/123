@@ -6,14 +6,13 @@ import { Link, Outlet } from 'react-router-dom'
 import { Server } from './Server/Server.jsx'
 
 import './Servers.scss'
-import { ProfilePage } from '../../Pages/Pages.js';
+import { MainPage, ProfilePage } from '../../Pages/Pages.js';
 import { ServerGet } from '../../actions/servers.js';
 
 export default function Servers() {
-    const serverList = document.querySelector('.all-servers')
     const dispatch = useDispatch()
 
-    const servers = useSelector(state => state.server.servers).map(server => <Server key={server.id} server={server} avatar={server.avatar} name={server.name} />)
+    const servers = useSelector(state => state.server.servers).map(server => <Server key={server._id} server={server} avatar={server.avatar} name={server.name} />)
     const [addOpen, setAddOpen] = useState(false);
     useEffect(() => {
         dispatch(ServerGet())
@@ -24,7 +23,7 @@ export default function Servers() {
             <section className='servers-panel'> 
                 <div className='personal'>
                     <Link to='/profile' element={< ProfilePage />}><img src='./svg/profile.svg' alt='Profile'/></Link>
-                    <a><img src='./svg/messages.svg'/></a>
+                    <Link to='/main' element={< MainPage />}><img src='./svg/messages.svg' alt='LS'/></Link>
                 </div>
 
                 <div className='servers'>

@@ -9,6 +9,7 @@ import {auth} from "./actions/user";
 
 function App() {
     const isAuth = useSelector(state => state.user.isAuth)
+    const role = useSelector(state => state.user.currentUser.role)
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -34,14 +35,18 @@ function App() {
 
         {isAuth &&
           <Routes>
+            <Route path='/' element={<Header />}>
+              <Route index element={<Welcome />} />
+              
+              <Route path='/registration' element={<Navigate to='/main' />} />
+              <Route path='/login' element={<Navigate to='/main' />} />
+            </Route>
+
             <Route path="/main" element={<MainPage />} />
             <Route path='/profile' element={<ProfilePage />} />
-
-            <Route path='/' element={<Navigate to='/main' />} />
-            <Route path='/registration' element={<Navigate to='/main' />} />
-            <Route path='/login' element={<Navigate to='/main' />} />
           </Routes> 
         }
+        
       </div>
   );
 }

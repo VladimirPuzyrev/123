@@ -15,7 +15,7 @@ export default function Chats() {
 
             <div className='chats'>
                 <ul className='all-chats'>
-
+                  
                 </ul>
                 <a className='add-chat'><img /></a>
             </div>

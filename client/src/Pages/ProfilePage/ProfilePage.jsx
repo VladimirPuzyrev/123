@@ -4,6 +4,7 @@ import { userReducer } from '../../reducers/userReducer';
 import { useDispatch, useSelector } from 'react-redux';
 import './ProfilePage.scss'
 import { edit } from '../../actions/user';
+import { Link } from 'react-router-dom';
 
 function MainPage(){
     const [editLogin, setEditLogin] = useState()
@@ -14,6 +15,9 @@ function MainPage(){
     
     const login = useSelector(state => state.user.currentUser.login)
     const email = useSelector(state => state.user.currentUser.email)
+
+    const isAuth = useSelector(state => state.user.isAuth)
+    const role = useSelector(state => state.user.currentUser.role)
     function formSend(e){
         e.preventDefault()
 
@@ -33,7 +37,7 @@ function MainPage(){
 
                 <div className='info-fill'>
                     <img></img>
-
+                    {(isAuth && role === 'admin') && <Link to='/'>asd</Link>}
                     <form onSubmit={formSend}>
                     <Input
                             value={editLogin}
@@ -59,6 +63,7 @@ function MainPage(){
                             id='sssss'
                         />
 
+                        
                         <button type='submit'></button>
                     </form>
 

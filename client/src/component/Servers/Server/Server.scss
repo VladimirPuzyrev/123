@@ -1,7 +1,13 @@
 .server{
-    width: 30px;
-    background-color: wheat;
+    width: 40px;
+    margin-left: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background-color: rgb(129, 88, 169);
+    border: 1px solid black;
     img{
         width: 30px;
+        align-self: center;
     }
 }

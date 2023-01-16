@@ -5,6 +5,7 @@ const User = new Schema({
     email: {type: String, required: true, unique: true},
     password: {type: String, required: true},
     avatar: {type: String},
+    role: {type: String, required: true},
     servers: [{type: ObjectId, ref:'Servers'}]
 })
 

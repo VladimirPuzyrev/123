@@ -28,7 +28,7 @@ router.post('/registration',
                 return res.status(400).json({message: "Uncorrect request", errors})
             }
 
-            const {login, email, password} = req.body
+            const {login, email, password, role} = req.body
             const candidate = await User.findOne({login, email})
 
             if(candidate){
@@ -38,7 +38,7 @@ router.post('/registration',
             console.log('прошел')
             
             const saltPassword = await bcrypt.hash(password, 8)
-            const user = new User({login, email, password: saltPassword})
+            const user = new User({login, email, password: saltPassword, role: role})
             
             await user.save()
             return res.json({message: "User successfully created"})
@@ -69,6 +69,7 @@ router.post('/login',
                     id: user.id,
                     login: user.login,
                     email: user.email,
+                    role: user.role,
                     avatar: user.avatar
                 }
             })
@@ -90,6 +91,7 @@ router.get('/auth', authMiddleware,
                     id: user.id,
                     login: user.login,
                     email: user.email,
+                    role: user.role,
                     avatar: user.avatar
                 }
             })
